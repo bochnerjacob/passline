@@ -1,0 +1,91 @@
+# PassLine 🏈
+
+## Overview
+This project applies machine learning to predict the number of passing touchdowns an NFL quarterback (QB) will throw in his next game. The model is deployed in a Streamlit app aimed at fans, bettors, and sports analytics enthusiasts.
+
+## Purpose 
+1. During the season, this app will be deployed in the cloud and display expected values of QB passing TD props to guide bettors.
+2. It also provides an interface to visualize model predictions for QB passing TD performances since 2023.
+
+## Application Snapshot
+**Model prediction for Patrick Mahomes against the Buffalo Bills in the 2024 AFC Championship**
+
+
+![Patrick Mahomes against the Buffalo Bills in the 2024 AFC Championship](image-3.png)
+
+## Model Development
+Data was primarily sourced from nflverse. The modeling pipeline includes extensive feature engineering, such as exponentially-weighted moving averages and contextual game features (e.g., implied point totals and weather forecasts). A Poisson generalized linear model was compared with a gradient-boosted tree model optimized with a Poisson loss function. Model selection and hyperparameter tuning were performed using leave-one-season-out cross-validation, with evaluation based on the mean Poisson deviance.
+
+See [`notebooks`](./notebooks) for exploratory data analysis, model evaluation, and bootstrapping results.
+
+## Model Evaluation
+
+Visualizations assessing model performance and fit are below.
+
+![loso.png](image.png)
+
+![actual_vs_predicted.png](image-1.png)
+
+![residuals.png](image-2.png)
+
+## Getting Started
+1. Clone the GitHub repo:
+```bash
+git clone https://github.com/bochnerjacob/PassLine
+```
+
+2. Install UV and dependencies:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv pip install -r pyproject.toml
+```
+
+3. Activate the environment:
+```bash
+source .venv/bin/activate
+```
+
+4. Navigate to scripts:
+```bash
+cd scripts
+```
+
+5. Run:
+```bash
+streamlit run app.py
+```
+
+## Project Structure
+```bash
+datasets/:
+    qb_bootstrap_results.parquet
+    qb_test_true_pred.parquet
+    qb_X_test.parquet
+    qb_X_train.parquet
+    qb.parquet
+
+models/:
+    qb_poisson_model.skops
+
+notebooks/:
+    preprocess_engineer_features.ipynb
+    cross_validation.ipynb
+    simulations.ipynb
+
+scripts/:
+    app.py
+    weather.py
+
+utils/:
+    nfl_utils.py
+```
+
+## Next Steps
+1. Incorporate live odds and data from the odds-api into the prediction pipeline for calculating expected values of prop bets
+2. Evaluate the value add from engineering more difficult features.
+    - Train a neural network to learn embeddings for coach names
+    - Fit a mixed model with Bayesian estimation and incorporate Bayesian updating to measure defensive strength against pass touchdowns
+3. Expand beyond QB pass touchdown props
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

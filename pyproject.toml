@@ -1,0 +1,22 @@
+[project]
+name = "qb-td"
+version = "0.1.0"
+description = "A machine learning approach to predicting the number of TD passes that an NFL QB will throw in his next game."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "datetime>=5.5",
+    "ipykernel>=6.29.5",
+    "matplotlib>=3.10.3",
+    "numpy>=2.2.5",
+    "pandas>=2.2.3",
+    "plotly>=6.1.0",
+    "polars>=1.29.0",
+    "pyarrow>=20.0.0",
+    "scikit-learn>=1.6.1",
+    "scipy>=1.15.3",
+    "seaborn>=0.13.2",
+    "skops>=0.11.0",
+    "streamlit>=1.45.1",
+    "tabulate>=0.9.0",
+]
