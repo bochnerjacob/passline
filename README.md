@@ -29,28 +29,36 @@ Visualizations assessing model performance and fit are below.
 ![residuals.png](image-2.png)
 
 ## Getting Started
-1. Clone the GitHub repo:
+1. Install UV:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+2. Clone the GitHub repo:
 ```bash
 git clone https://github.com/bochnerjacob/PassLine
 ```
 
-2. Install UV and dependencies:
+3. Navigate to the directory:
 ```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
+cd PassLine
+```
+
+4. Create a virtual environment, activate it, and install packages:
+```bash
+uv venv
+source .venv/bin/activate
 uv pip install -r pyproject.toml
 ```
 
-3. Activate the environment:
-```bash
-source .venv/bin/activate
-```
-
-4. Navigate to scripts:
+5. Navigate to scripts and open app.py:
 ```bash
 cd scripts
 ```
 
-5. Run:
+6. Change <YOUR_DATASETS_DIRECTORY> in the import statement near the top of the script to your local path.
+
+7. Save app.py, exit, and run:
 ```bash
 streamlit run app.py
 ```
@@ -81,11 +89,12 @@ utils/:
 ```
 
 ## Next Steps
-1. Incorporate live odds and data from the odds-api into the prediction pipeline for calculating expected values of prop bets
-2. Evaluate the value add from engineering more difficult features.
-    - Train a neural network to learn embeddings for coach names
-    - Fit a mixed model with Bayesian estimation and incorporate Bayesian updating to measure defensive strength against pass touchdowns
-3. Expand beyond QB pass touchdown props
+1. Incorporate live odds and data from the odds-api into the prediction pipeline for calculating expected values of prop bets.
+2. Evaluate the value add of engineering more difficult features.
+    - Train a neural network to learn entity embeddings for coach names.
+    - Explore more sophistocated ways to measure defensive strength.
+3. Fit a mixed model with Bayesian estimation to compare to current approach.
+4. Expand beyond QB passing touchdown props.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
