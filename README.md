@@ -70,6 +70,7 @@ datasets/:
     qb_test_true_pred.parquet
     qb_X_test.parquet
     qb_X_train.parquet
+    qb_y_train.parquet
     qb.parquet
 
 models/:
